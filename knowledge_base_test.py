@@ -21,6 +21,7 @@ class WordlistTestThread(Thd):
 	total_answer = 0
 	answer_cover = 0
 	total_word = 0
+	clue_in_answer_discrip = 0
 #clue整体与clue的部分（keyword等snippets）的查询结果
 	full_clue_matched = 0
 	part_clue_matched = 0
@@ -28,8 +29,8 @@ class WordlistTestThread(Thd):
 	def __init__(self, clue, answer):
 		super(WordlistTestThread, self).__init__(name = answer)
 		self._clue = clue
-		self._whole_keyword = remove_symbles.sub('', clue)
-		self._part_keywords = 
+		self._whole_keyword = remove_symbles.sub(' ', clue).strip()
+		self._part_keywords = #NLP 处理后得到的名词
 		self._answer = answer
 		self._query_url = 'http://en.wordlist.eu/search/phrase,'
 		self._words_url = 'http://en.wordlist.eu/words/letter,'
@@ -53,6 +54,8 @@ class WordlistTestThread(Thd):
 			base_url = self._query_url + self._answer + '/' + str(word_number)
 			try:
 				page = pq(base_url)
+				if len(page('div.content div.result h2 a')) == 0:
+					break
 			except Exception, e:
 				print self._answer + ' error'
 				return None
@@ -62,10 +65,18 @@ class WordlistTestThread(Thd):
 				href = pq(word).attr('href')
 				text = pq(word).text().upper()
 				if text == self._answer:
+					#answer 存在
 					self.__class__.answer_cover += 1
 					flag = False
 					answer_rank = word_number + word_list.index(word)
 					self.__class__.total_word += answer_rank
+					#clue 相关
+					word_page = pq(href)
+					dis = word_page('dl#definitions').text()
+					for key in self._part_keywords:
+						if key in dis:
+							self.__class__.clue_in_answer_discrip += 1
+							break
 					break
 			word_number += 40
 		# first_letter = self._answer[0]
