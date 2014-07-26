@@ -2,26 +2,137 @@
 # -*- coding: utf-8 -*-
 
 #import urllib2 as u2
+import datetime
 from pyquery import PyQuery as pq
 import os
 import urllib
 import re
 from threading import Thread as Thd
+import wikipedia as wk
+
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')#用于改变系统默认编码为utf8
 
 class WikipediaTestThread(Thd):
 	"""for wiki"""
-	def __init__(self, answer, clue):
-		super(WikipediaTestThread, self).__init__()
-		self.answer = answer
-		self.clue = clue
-		
+	remove_symbles = re.compile('[^0-9A-Za-z ]')
+	remove_brakets = re.compile('\(.+\)')
+	space = re.compile(' +')
+
+	total_answer = 0 #总共查询的 answer 数目
+	total_clue = 0
+	answer_cover = 0 #查询 answer 时结果出现 answer 的数目
+	total_word = 0 #answer 出现时它前面的单词总数
+	clue_in_answer_discrip = 0 #answer 查询结果中clue出现单词的百分比
+	full_clue_matched = 0
+	part_clue_matched = 0
+
+	def __init__(self, clue, answer):
+		super(WikipediaTestThread, self).__init__(name = answer)
+		self._clue = clue
+		self._answer = answer
+		self._whole_keyword = self.__class__.remove_symbles.sub(' ', clue).strip()
+		self._part_keywords = self.__class__.space.split(self._whole_keyword)
+		self._keywords_number = len(self._part_keywords)
+		self._answer_length = len(answer)
+		wk.set_rate_limiting(True, datetime.timedelta(0,0,2000000))
+
+	def _answer_cover(self):
+		try:
+			sug = wk.suggest(self._answer)
+			if type(sug) == str:
+				sug = [sug]
+		except Exception, e:
+			return False
+		if sug != None:#建议列表不为空
+			for su in sug:
+				if self.__class__.space.sub('', self.__class__.remove_brakets.sub('', su)).upper() == self._answer:
+					self.__class__.total_answer += 1
+					self.__class__.answer_cover += 1
+					return True
+		sear = wk.search(self._answer)
+		if type(sear) == str:
+			sear = [sear]
+		self.__class__.total_answer += 1
+		if sear == None:#搜索结果为空
+			return False
+		else:#搜索结果不为空
+			for s in sear:
+				if self.__class__.space.sub('', self.__class__.remove_brakets.sub('', s)).upper() == self._answer:
+					self.__class__.answer_cover += 1
+					
+					page = wk.page(s)#获取 answer 文章
+					c = page.content
+					count = 0
+					for word in self._part_keywords:
+						if c.find(word) != -1:
+							count += 1
+					self.__class__.clue_in_answer_discrip += count / len(self._part_keywords)
+					
+					return True
+		print 'total_answer:'
+		print WikipediaTestThread.total_answer
+		print 'answer_cover:'
+		print WikipediaTestThread.answer_cover
+		# print 'total_word:'
+		# print WikipediaTestThread.total_word
+		print 'clue_in_answer_discrip:'
+		print WikipediaTestThread.clue_in_answer_discrip
+		print 'total_clue:'
+		print WikipediaTestThread.total_clue
+		print 'full_clue_matched:'
+		print WikipediaTestThread.full_clue_matched
+
+
+
+	def _full_clue_cover(self):
+		try:
+			sug = wk.suggest(self._whole_keyword)
+			if type(sug) == str:
+				sug = [sug]
+			sear = wk.search(self._whole_keyword)
+			if type(sear) == str:
+				sear = [sear]
+		except Exception, e:
+			return False
+		self.__class__.total_clue += 1
+		l = []
+		if sug == None and sear == None:
+			return False
+		elif sug != None and sear != None:
+			l = sug + sear
+		elif sug != None:
+			l = sug
+		else:
+			l = sear
+
+		for a in l:
+			if self.__class__.space.sub('', self.__class__.remove_brakets.sub('', a)).upper() == self._answer:
+				self.__class__.full_clue_matched += 1
+				return True
+		print 'total_answer:'
+		print WikipediaTestThread.total_answer
+		print 'answer_cover:'
+		print WikipediaTestThread.answer_cover
+		# print 'total_word:'
+		# print WikipediaTestThread.total_word
+		print 'clue_in_answer_discrip:'
+		print WikipediaTestThread.clue_in_answer_discrip
+		print 'total_clue:'
+		print WikipediaTestThread.total_clue
+		print 'full_clue_matched:'
+		print WikipediaTestThread.full_clue_matched
+
+
+
+	def run(self):
+		self._answer_cover()
+		self._full_clue_cover()
 
 
 class WordlistTestThread(Thd):
-	"""docstring for WordlistTestThread"""
+	"""for Wordlist"""
 	remove_symbles = re.compile('[^0-9A-Za-z ]')
 	get_number = re.compile('[0-9]+')
 	#答案数据的覆盖度
@@ -31,7 +142,7 @@ class WordlistTestThread(Thd):
 	total_word = 0 #answer 出现时它前面的单词总数
 	clue_in_answer_discrip = 0 #answer 查询结果中clue出现单词的百分比
 	#clue整体与clue的部分（keyword等snippets）的查询结果
-	full_clue_matched = 0 #
+	full_clue_matched = 0
 	part_clue_matched = 0
 	#查询结果中答案的存在与否
 	def __init__(self, clue, answer):
@@ -203,24 +314,48 @@ def main():
 			answer = line.split(' , ', 1)[0]
 			clue = line.split(' , ', 1)[1]
 			print answer + ' , ' + clue.replace('\n', '')
-			thread_list.append(WordlistTestThread(clue, answer))
+	#wordlist test
+			# thread_list.append(WordlistTestThread(clue, answer))
+	#wiki test
+			thread_list.append(WikipediaTestThread(clue, answer))
 	for th in thread_list:
 		th.start()
 	for th in thread_list:
 		th.join(40)
-		# print 'joined'
+
+#wordlist result
+	# print '\n\n\n\n\n\n\n\ntotal_answer:'
+	# print WordlistTestThread.total_answer
+	# print 'answer_cover:'
+	# print WordlistTestThread.answer_cover
+	# print 'total_word:'
+	# print WordlistTestThread.total_word
+	# # print 'clue_in_answer_discrip:'
+	# # print WordlistTestThread.clue_in_answer_discrip
+	# print 'total_clue:'
+	# print WordlistTestThread.total_clue
+	# print 'full_clue_matched:'
+	# print WordlistTestThread.full_clue_matched
+
+
+#wiki result
 	print '\n\n\n\n\n\n\n\ntotal_answer:'
-	print WordlistTestThread.total_answer
+	print WikipediaTestThread.total_answer
 	print 'answer_cover:'
-	print WordlistTestThread.answer_cover
-	print 'total_word:'
-	print WordlistTestThread.total_word
-	# print 'clue_in_answer_discrip:'
-	# print WordlistTestThread.clue_in_answer_discrip
+	print WikipediaTestThread.answer_cover
+	# print 'total_word:'
+	# print WikipediaTestThread.total_word
+	print 'clue_in_answer_discrip:'
+	print WikipediaTestThread.clue_in_answer_discrip
 	print 'total_clue:'
-	print WordlistTestThread.total_clue
+	print WikipediaTestThread.total_clue
 	print 'full_clue_matched:'
-	print WordlistTestThread.full_clue_matched
+	print WikipediaTestThread.full_clue_matched
+
+	os.system("pause")
+
+
+
 
 # 	total_answer = 0 #总共查询的 answer 数目
 # 	answer_cover = 0 #查询 answer 时结果出现 answer 的数目
