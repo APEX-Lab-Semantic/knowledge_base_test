@@ -1,0 +1,74 @@
+ORI , "Do it, __ will!"
+ICUS , "ER" areas
+IDARESAY , "It seems to me ..."
+FARR , "M*A*S*H" actor
+ARIOT , "That's __!": "Funny!"
+DEI , Agnus __
+ONTOP , Ahead of the rest
+CROSS , Betray
+ACTI , Broadway opening
+CONDI , Cabinet member under Dubya
+ARUM , Calla lily family
+GUY , Chap
+SATS , Coll. admissions requirements
+TEXT , Communicate via PDA
+NAGAT , Continually find fault with
+RICAN , Costa __
+TOOTH , Crown location
+RUSE , Deception
+EWER , Decorative pitcher
+DEEM , Determine
+TEK , Drug in Shatner novels
+ALF , E.T. from Melmac
+PATCH , Elbow __
+PSI , ESP and such
+GOTORUIN , Fall apart completely
+PILOT , Flier
+MARS , Fourth of eight, now
+PSST , Furtive "Yo!"
+ASIS , Garage sale sign
+DESC , Genealogical abbr.
+STICKTOYOURGUNS , Hang tough
+STANDYOURGROUND , Hang tough
+PUTUPAGOODFIGHT , Hang tough
+DONTBACKDOWN , Hang tough
+KEEPTHEFAITH , Hang tough
+NOG , Holiday quaff
+DISCO , Hustler's genre
+DOTO , Inflict on
+HIRER , Interviewer, often
+QUARANTINE , Involuntary isolation
+MAST , It may be rigged
+PEEP , It's barely audible
+UTAH , Jazz club site
+ANNE , Last Stuart queen
+INST , Learning ctr.
+BIC , Lighter handle
+ADDUP , Make sense
+UNHIT , Missed, as a pitch
+NDAK , Mont. neighbor
+INT , Mtge. payment component
+CHUNK , Much more than a speck
+TYRO , Novice
+OPERA , One of four in Wagner's Ring cycle
+EISNER , One who ran a Mickey Mouse operation?
+UTE , Part of SUV, briefly
+ALGA , Pond growth
+STOUT , Pub quaff
+SARI , Rani's garb
+KIA , Rio automaker
+REARUP , Rise in defiance
+ARRID , Secret competitor
+TINA , She played Ginger on "Gilligan's Island"
+SKIN , Shirt opponent, in a pickup game
+FISH , Sneakily probe (for)
+LEONA , Soprano Mitchell
+ETUI , Special case
+ITE , Suburban suffix
+DUPE , Suck in
+UNIX , System developed at Bell Labs
+DOGBISCUIT , Treat for a trick, maybe
+CDR , USN officer
+FAQ , Web site info source
+KAYAK , Whitewater craft
+DRUB , Whomp

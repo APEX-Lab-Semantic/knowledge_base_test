@@ -1,0 +1,140 @@
+STOPIT , 'Enough!'
+AIDA , 'Ritorna vincitor' singer
+ONEI , 'The ___ Gave My Heart To' (Aaliyah song)
+ESO , '___ Beso'
+GENTLEBEN , 1960s TV show set in the Everglades
+SADAT , 1978 Camp David visitor
+ROSSPEROT , 1992 presidential candidate
+PER , According to
+NET , After taxes
+UNIV , B.S. issuer
+OLEOS , Bread spreads
+APLENTY , By the dozen
+ENER , Cabinet dept
+CSIMIAMI , CBS spinoff
+CREE , Chief Big Bear, for one
+ROBE , Choir costume
+FAN , Circulation improver
+MUNI , City bond, briefly
+STAHL , Colleague of Pelley and Kroft
+TRAGI , Comedy prefix
+PIPELINES , Communication channels
+IKEA , Company headquartered in Delft
+GOT , Comprehended
+ANNO , Cornerstone word
+CAWS , Cornfield cries
+EDGES , Cube dozen
+RFK , D.C. stadium initials
+EDAM , Dairy case import
+FENCE , Dealer in hot properties
+REHAB , Detox setting
+CLOTH , Drapers' wares
+TROU , Drop ___ (moon)
+EMIR , Dubai dignitary
+NULLS , Dummy letters in cryptography
+ABACI , Early calculators
+ABORIGINE , Early inhabitant
+SELENA , Early J-Lo role
+STET , Editor's order
+CAM , Engine part
+BELUGAS , Eurasian sturgeons
+USESUP , Exhausts
+HAM , Expert at overplaying
+PALE , Far from ruddy
+ATE , Filled up
+ARTSALE , Gallery event
+AURIC , Goldfinger's first name
+RISE , Greet the day
+AINTI , Hit for rapper Yung L.A
+KNEES , Hits from below
+HERO , Hoagie's cousin
+TORPEDOS , Hoagies' cousins
+CROC , Hook pursuer
+BORNEO , Island shared by three nations
+NEON , It's a gas
+DEPOSIT , It's taken into account
+DEBORAH , Kerr of 'The King and I'
+ENTER , Key in
+ABUSING , Kicking around
+RENAL , Kidney-based
+AERATORS , Kitchen faucet parts
+MAMBA , Lethal African snake
+RASPY , Like Rod Stewart's voice
+DOPE , Lowdown
+TAPA , Madrid munchie
+DDAYS , Make-or-break times
+HOUK , Manager of Mantle and Maris
+INSET , Map within a map
+DIPS , Market corrections
+LECID , Massenet opera set in Castile
+MEGAHURTS , Measure for plenty of pain?
+KNOTFURLONG , Measure for sailing short distances?
+MICROSCOPE , Measure of a small amount of mouthwash?
+SEMICOLON , Measure of half a large intestine?
+HOARSEPOWER , Measure of laryngitis?
+FIGNEWTON , Measure of the force of falling fruit?
+LITERHOSEN , Measure of wet socks?
+BILLIGRAM , Measure used when weighing an evangelist?
+PARADIGMS , Measures equivalent to 20 cents?
+TERRAPINS , Measures for trillions of fasteners?
+BANANOSECONDS , Measures of the time it takes to slip on a peel and hit the pavement?
+ETTE , Miniaturizing suffix
+METAL , Mint need
+WOMEN , Most teachers
+HELENS , Mount St. ___
+BRAVOS , Music to a musician's ears
+OPED , Newspaper piece
+YOKED , On a farm team
+ABSENT , Out
+ERATO , Ovid's muse
+DOER , Person of action
+LANCE , Picador's prop
+EAST , Point to the right
+IMOKAY , Post-trip assurance
+DOCS , Practicing pros
+PECAN , Praline morsel
+TYPESET , Prepare for publication
+PERFECTA , Quinella's cousin
+BIASTIRE , Radial alternative
+PLAGE , Riviera beach
+RON , Role for Rupert
+ALISTS , Rosters of the rich and famous
+YRS , Sentence units: Abbr
+ACUTE , Severe
+NCO , Sgt. Bilko, for one
+SEASHORE , Site for a summer home
+AXEL , Skating stunt
+MOE , Slap-happy Howard
+RVERS , Some campground users
+ETAT , South Dakota, to Pierre
+LOCALES , Spots
+LAD , Sprout
+WASTE , Squander
+ALONE , Stag
+SAMPLE , Statistical group
+OKIE , Steinbeck figure
+ATEE , Suit to ___
+LEN , Super Bowl IV MVP Dawson
+PRESEAT , Take care of passengers with small children, say
+YARN , Tale
+AROD , Teammate of C.C
+AGAVE , Tequila source
+TAXI , Terminal transportation
+PENN , The Quakers' school
+PAPP , Theater producer Joseph
+ASH , Tough wood
+DWARFED , Towered over
+AMOK , Uncontrolled
+DCCAB , Vehicle for Mr. T
+ORES , Vein contents
+IRENE , Vernon Castle's wife
+TAKES , Viewpoints
+ERN , West ender
+ANOSE , What one may win by
+ARENA , Where the action is
+SEES , Witnesses
+ACTOF , Words before Congress or God
+HONE , Work on, as one's skills
+SECULAR , Worldly
+SPAR , Wrangle
+DER , ___ Spiegel

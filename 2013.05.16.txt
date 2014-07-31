@@ -1,0 +1,36 @@
+PERIOD , An amount of time
+LUMBAR , Area of the back between lower ribs and pelvis
+BIRETTAS , Black hats for Roman Catholic clergy
+CHORUS , Body of singers
+CASUAL , Cursory or nonchalant
+ROTTEN , Decayed, stinking
+DESPISING , Disdaining, scorning
+OPINES , Expresses one's view
+INFER , Extrapolate, conclude
+FACADE , Front of a building
+GENOME , Full DNA sequence
+NEEDLED , Goaded, provoked
+SUET , Hard fat in cattle and sheep
+ASSISTS , Helps or waits on
+SWAMIS , Hindu religious teachers
+PEAR , Juicy fruit
+ATONES , Make amends for sin
+DEMEANOUR , Manner of behaving towards others
+PARLANCE , Manner of speaking peculiar to a group
+ACER , Maple tree
+RODENT , Mouse or squirrel, say
+IMMOBILE , Not capable of movement
+EXPARTE , Of or from one side only, legally
+ICICLE , Pendant of frozen water
+TIDES , Periodic rises and falls of the sea
+KETTLE , Pot and drum
+RAKES , Profligates and garden implements
+NICHES , Recesses
+LOAM , Rich soil
+CLAPTRAP , Stuff and nonsense
+MIRACLE , Supernatural event
+DEJAVU , The experience of thinking that a new situation has occurred before
+ZEITGEIST , The spirit of the age
+SCENE , View, sight
+REVILE , Vilify
+ELECTIONS , Votes to fill positions or political office

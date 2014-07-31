@@ -1,0 +1,32 @@
+PREY , Animal hunted for food
+HASSLE , Annoy continually
+LIONISES , Assigns great social importance to
+SCONCE , Candle-holder attached to a wall
+ECLAIR , Chocolate and cream cake
+LIPSTICK , Cosmetic item
+BARBARIC , Cruel and brutal
+OYEZ , Cry of the old town crier
+NEVADA , Dan and Eva are in the US
+TRANSEPT , It crosses the nave in a church
+LIELOW , Keep out of sight to avoid attention
+CANNON , Large artillery gun
+OMITTED , Left out
+PEDIGREE , Line of descent
+RODS , Long slender bars
+STALWART , Loyal, reliable and hardworking
+UNCLES , Male relatives
+QUORUM , Minimum required to conduct business
+CLOSETO , Nearby
+EXECUTOR , One carries out the terms of a will
+OBLONG , Rectangular figure
+IMAGES , Representations or reflections
+AUGUSTUS , Roman emperor with a month named after him
+SOMERSET , Rome's set up in this English county
+APHORISM , Short pithy saying
+DOZE , Sleep lightly
+RESISTED , Stood firm, held out
+SASHES , They hold the glass in window frames
+BERIBERI , Tropical disease caused by lack of vitamin B1
+ERRATIC , Unpredictable, temperamental
+VERBOSE , Using too many words
+SAGELY , Wisely

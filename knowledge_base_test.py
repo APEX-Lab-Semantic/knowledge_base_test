@@ -8,16 +8,19 @@ import urllib
 import re
 from threading import Thread as Thd
 import wikipedia as wk
+from stat_parser import Parser as par
 
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')#用于改变系统默认编码为utf8
 
-class WikipediaTestThread(Thd):
+class WikipediaTestThread(Thd): 
 	"""for wiki"""
 	remove_symbles = re.compile('[^0-9A-Za-z ]')
 	remove_brakets = re.compile('\(.+\)')
 	space = re.compile(' +')
+	noun = re.compile('(n|N).+')
+	verb = re.compile('(v|V).+')
 
 	total_answer = 0 #总共查询的 answer 数目
 	total_clue = 0
@@ -32,7 +35,24 @@ class WikipediaTestThread(Thd):
 		self._clue = clue
 		self._answer = answer
 		self._whole_keyword = self.__class__.remove_symbles.sub(' ', clue).strip()
-		self._part_keywords = self.__class__.space.split(self._whole_keyword)
+		self._part_keyword = ''
+		pa = par()
+		self._part_keywords = []
+		try:
+			tag_list = pa.parse(self._whole_keyword).pos()
+			for tag in tag_list:
+				# print self.__class__.noun.match(tag[1])
+				# print self.__class__.verb.match(tag[1])
+				if self.__class__.noun.match(tag[1]) != None or self.__class__.verb.match(tag[1]) != None:
+					self._part_keywords.append(tag[0])
+					self._part_keyword += tag[0] + ' '
+			if len(self._part_keywords) == 0:
+				self._part_keywords = self.__class__.space.split(self._whole_keyword)
+			print self._part_keywords
+		except Exception, e:
+			self._part_keywords = self.__class__.space.split(self._whole_keyword)
+			for word in self._part_keywords:
+				self._part_keyword += word + ' '
 		self._keywords_number = len(self._part_keywords)
 		self._answer_length = len(answer)
 
@@ -79,10 +99,12 @@ class WikipediaTestThread(Thd):
 
 	def _full_clue_cover(self):
 		try:
-			sug = wk.suggest(self._whole_keyword)
+			# sug = wk.suggest(self._whole_keyword)
+			sug = wk.suggest(self._part_keyword)
 			if type(sug) != list:
 				sug = [sug]
-			sear = wk.search(self._whole_keyword)
+			# sear = wk.search(self._whole_keyword)
+			sear = wk.search(self._part_keyword)
 			if type(sear) != list:
 				sear = [sear]
 		except Exception, e:
@@ -104,15 +126,56 @@ class WikipediaTestThread(Thd):
 			l = sear
 
 		for a in l:
-			if a != None and self.__class__.space.sub('', self.__class__.remove_brakets.sub('', a.encode('utf-8'))).upper() == self._answer:
-				self.__class__.full_clue_matched += 1
+			if a != None and a.find('disambiguation') == -1:# and self.__class__.space.sub('', self.__class__.remove_brakets.sub('', a.encode('utf-8'))).upper() == self._answer:
+				try:
+					apage = wk.page(a)
+				except Exception, e:
+					continue
+				out_links = apage.links
+				if apage.content.upper().find(self._answer) != -1:
+					self.__class__.full_clue_matched += 1
+				else:
+					for o in out_links:
+						try:
+							opage = wk.page(o)
+						except Exception, e:
+							continue
+						if opage.content.upper().find(self._answer) != -1:
+							self.__class__.full_clue_matched += 1
+							return True
 				return True
 		print self._answer + ' full clue cover finished'
 
 
 	def run(self):
-		self._answer_cover()
-		self._full_clue_cover()
+		try:
+			self._answer_cover()
+		except Exception, e:
+			pass
+		print 'total_answer:'
+		print WikipediaTestThread.total_answer
+		print 'answer_cover:'
+		print WikipediaTestThread.answer_cover
+		print 'clue_in_answer_discrip:'
+		print WikipediaTestThread.clue_in_answer_discrip
+		print 'total_clue:'
+		print WikipediaTestThread.total_clue
+		print 'full_clue_matched:'
+		print WikipediaTestThread.full_clue_matched
+		try:
+			self._full_clue_cover()
+		except Exception, e:
+			pass
+		print 'total_answer:'
+		print WikipediaTestThread.total_answer
+		print 'answer_cover:'
+		print WikipediaTestThread.answer_cover
+		print 'clue_in_answer_discrip:'
+		print WikipediaTestThread.clue_in_answer_discrip
+		print 'total_clue:'
+		print WikipediaTestThread.total_clue
+		print 'full_clue_matched:'
+		print WikipediaTestThread.full_clue_matched
 
 
 class WordlistTestThread(Thd):
@@ -244,15 +307,17 @@ def main():
 		root = './'
 	else:
 		root = sys.argv[1]
-	print os.path.isdir(root)
 	if not (os.path.isdir(root)):
 		print 'wrong path format'
 		return False
 	sys_file = re.compile('(\.|\~).*')
+	test_file = re.compile('\d{4}\.(\d{2}\.){2}txt')
 	thread_list = []
 	files = os.listdir(root)
 	files.remove('knowledge_base_test.py')
 	for f in files:
+		if test_file.match(f) == None:
+			continue
 		print 'File:' + f
 		fin = open(f, 'r')
 		for line in fin:
@@ -267,6 +332,8 @@ def main():
 		th.start()
 	for th in thread_list:
 		th.join(40)
+
+2014.03.05.txt
 
 #wordlist result
 	# print '\n\n\n\n\n\n\n\ntotal_answer:'
